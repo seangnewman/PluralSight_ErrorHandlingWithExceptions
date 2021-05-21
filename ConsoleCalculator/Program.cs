@@ -1,5 +1,5 @@
 ﻿using System;
-using static System.Console;
+ 
 
 namespace ConsoleCalculator
 {
@@ -7,29 +7,39 @@ namespace ConsoleCalculator
     {
         static void Main(string[] args)
         {
-            WriteLine("Enter first number");
-            int number1 = int.Parse(ReadLine());
+            Console.WriteLine("Enter first number");
+            int number1 = int.Parse(Console.ReadLine());
 
-            WriteLine("Enter second number");
-            int number2 = int.Parse(ReadLine());
+            Console.WriteLine("Enter second number");
+            int number2 = int.Parse(Console.ReadLine());
 
-            WriteLine("Enter operation");
-            string operation = ReadLine().ToUpperInvariant();
+            Console.WriteLine("Enter operation");
+            string operation = Console.ReadLine().ToUpperInvariant();
 
 
             var calculator = new Calculator();
-            int result = calculator.Calculate(number1, number2, operation);
-            DisplayResult(result);
+
+            try
+            {
+                int result = calculator.Calculate(number1, number2, operation);
+                DisplayResult(result);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Sorry, something went wrong.  {ex}");
+            }
+          
 
 
-            
-            WriteLine("\nPress enter to exit.");
-            ReadLine();
+
+            Console.WriteLine("\nPress enter to exit.");
+            //Console.ReadLine();
         }
 
         private static void DisplayResult(int result)
         {
-            WriteLine($"Result is: {result}");
+            Console.WriteLine($"Result is: {result}");
         }
     }
 }

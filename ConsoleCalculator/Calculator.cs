@@ -11,9 +11,10 @@ namespace ConsoleCalculator
                 return Divide(number1, number2);
             }
             else
-            {            
-                Console.WriteLine("Unknown operation.");
-                return 0;
+            {
+                //Console.WriteLine("Unknown operation.");
+                //return 0;
+                throw new ArgumentOutOfRangeException(nameof(operation), "The mathematical operations is not supported. ");
             }
         }
         
