@@ -6,9 +6,29 @@ namespace ConsoleCalculator
     {
         public int Calculate(int number1, int number2, string operation)
         {
-            if (operation == "/")
+            //if (operation is null)
+            //{
+            //    throw new ArgumentNullException(nameof(operation));
+            //}
+
+           // throw new ArgumentNullException(nameof(number1));
+
+            string nonNullOperation = operation ?? throw new ArgumentNullException(nameof(operation));
+
+            if (nonNullOperation == "/")
             {
-                return Divide(number1, number2);
+                try
+                {
+                    return Divide(number1, number2);
+
+                }
+                catch (DivideByZeroException ex)
+                {
+                    // By using throw (rather than throw ex) we save valuable information on the call stack
+                    //throw;
+
+                    throw new ArithmeticException("An error occurred during calculation", ex);
+                }
             }
             else
             {
