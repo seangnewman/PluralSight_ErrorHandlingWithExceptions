@@ -30,21 +30,10 @@ namespace ConsoleCalculator
                 DisplayResult(result);
 
             }
-            catch(ArgumentNullException ex) when (ex.ParamName == "operation")
+
+            catch (CalculationException ex)
             {
-                Console.WriteLine($"Operation was not provided. {ex}");
-            }
-            catch (ArgumentNullException ex)  
-            {
-                Console.WriteLine($"An agrument is null. {ex}");
-            }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                Console.WriteLine($"Operation is not supported. {ex}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Sorry, something went wrong.  {ex}");
+                Console.WriteLine(ex);
             }
             finally
             {
